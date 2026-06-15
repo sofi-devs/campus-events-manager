@@ -1,0 +1,39 @@
+<%
+  // Format a timestamp into the value a <input type="datetime-local"> expects.
+  function toLocalInput(d) {
+    const dt = new Date(d);
+    const pad = (n) => String(n).padStart(2, '0');
+    return (
+      dt.getFullYear() + '-' + pad(dt.getMonth() + 1) + '-' + pad(dt.getDate()) +
+      'T' + pad(dt.getHours()) + ':' + pad(dt.getMinutes())
+    );
+  }
+%>
+
+<a href="/events/<%= event.id %>" class="back">← Cancel</a>
+<h1>Edit Event</h1>
+
+<% if (errors.length) { %>
+  <div class="flash flash-error">
+    <ul><% errors.forEach(e => { %><li><%= e %></li><% }) %></ul>
+  </div>
+<% } %>
+
+<form action="/events/<%= event.id %>?_method=PUT" method="POST" class="form">
+  <label>Title
+    <input type="text" name="title" value="<%= event.title %>" required />
+  </label>
+  <label>Description
+    <textarea name="description" rows="4"><%= event.description || '' %></textarea>
+  </label>
+  <label>Location
+    <input type="text" name="location" value="<%= event.location || '' %>" />
+  </label>
+  <label>Date &amp; time
+    <input type="datetime-local" name="event_date" value="<%= toLocalInput(event.event_date) %>" required />
+  </label>
+  <label>Capacity (leave blank for unlimited)
+    <input type="number" name="capacity" min="1" value="<%= event.capacity || '' %>" />
+  </label>
+  <button type="submit" class="btn">Save Changes</button>
+</form>

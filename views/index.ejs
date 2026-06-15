@@ -1,0 +1,20 @@
+<div class="page-head">
+  <h1>Upcoming Events</h1>
+  <form action="/" method="GET" class="search">
+    <input type="text" name="search" placeholder="Search by title or location…" value="<%= search %>" />
+    <button type="submit" class="btn btn-small">Search</button>
+  </form>
+</div>
+
+<% if (events.length === 0) { %>
+  <p class="empty">
+    No events found.
+    <% if (currentUser) { %><a href="/events/new">Create the first one!</a><% } %>
+  </p>
+<% } else { %>
+  <div class="grid">
+    <% events.forEach(event => { %>
+      <%- include('partials/event-card', { event }) %>
+    <% }) %>
+  </div>
+<% } %>

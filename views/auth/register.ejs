@@ -1,0 +1,24 @@
+<div class="auth-box">
+  <h1>Create an account</h1>
+
+  <% if (errors.length) { %>
+    <div class="flash flash-error">
+      <ul><% errors.forEach(e => { %><li><%= e %></li><% }) %></ul>
+    </div>
+  <% } %>
+
+  <form action="/register" method="POST" class="form">
+    <label>Name
+      <input type="text" name="name" value="<%= formData.name || '' %>" required />
+    </label>
+    <label>Email
+      <input type="email" name="email" value="<%= formData.email || '' %>" required />
+    </label>
+    <label>Password
+      <input type="password" name="password" required minlength="6" />
+    </label>
+    <button type="submit" class="btn">Register</button>
+  </form>
+
+  <p class="muted">Already have an account? <a href="/login">Login</a>.</p>
+</div>

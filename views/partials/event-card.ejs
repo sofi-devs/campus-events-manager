@@ -1,0 +1,18 @@
+<article class="card">
+  <h3 class="card-title">
+    <a href="/events/<%= event.id %>"><%= event.title %></a>
+  </h3>
+  <p class="card-meta">
+    📅 <%= new Date(event.event_date).toLocaleString() %>
+    <% if (event.location) { %> · 📍 <%= event.location %><% } %>
+  </p>
+  <% if (event.description) { %>
+    <p class="card-desc">
+      <%= event.description.length > 120 ? event.description.slice(0, 120) + '…' : event.description %>
+    </p>
+  <% } %>
+  <p class="card-foot">
+    <span class="badge"><%= event.attendee_count %> going<% if (event.capacity) { %> / <%= event.capacity %><% } %></span>
+    <span class="organizer">by <%= event.organizer %></span>
+  </p>
+</article>

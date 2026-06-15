@@ -1,0 +1,27 @@
+<a href="/" class="back">← Cancel</a>
+<h1>Create Event</h1>
+
+<% if (errors.length) { %>
+  <div class="flash flash-error">
+    <ul><% errors.forEach(e => { %><li><%= e %></li><% }) %></ul>
+  </div>
+<% } %>
+
+<form action="/events" method="POST" class="form">
+  <label>Title
+    <input type="text" name="title" value="<%= formData.title || '' %>" required />
+  </label>
+  <label>Description
+    <textarea name="description" rows="4"><%= formData.description || '' %></textarea>
+  </label>
+  <label>Location
+    <input type="text" name="location" value="<%= formData.location || '' %>" />
+  </label>
+  <label>Date &amp; time
+    <input type="datetime-local" name="event_date" value="<%= formData.event_date || '' %>" required />
+  </label>
+  <label>Capacity (leave blank for unlimited)
+    <input type="number" name="capacity" min="1" value="<%= formData.capacity || '' %>" />
+  </label>
+  <button type="submit" class="btn">Create Event</button>
+</form>

@@ -1,0 +1,57 @@
+<a href="/" class="back">← All events</a>
+
+<article class="event-detail">
+  <h1><%= event.title %></h1>
+  <p class="card-meta">
+    📅 <%= new Date(event.event_date).toLocaleString() %>
+    <% if (event.location) { %> · 📍 <%= event.location %><% } %>
+  </p>
+  <p class="organizer">Organized by <%= event.organizer %></p>
+
+  <% if (event.description) { %>
+    <p class="desc"><%= event.description %></p>
+  <% } %>
+
+  <div class="rsvp-box">
+    <span class="badge big">
+      <%= attendeeCount %> going<% if (event.capacity) { %> / <%= event.capacity %><% } %>
+    </span>
+
+    <% if (currentUser) { %>
+      <% if (userHasRsvp) { %>
+        <form action="/events/<%= event.id %>/rsvp/cancel" method="POST" class="inline">
+          <button class="btn btn-outline">Cancel RSVP</button>
+        </form>
+      <% } else { %>
+        <form action="/events/<%= event.id %>/rsvp" method="POST" class="inline">
+          <button class="btn">RSVP — I'm going</button>
+        </form>
+      <% } %>
+    <% } else { %>
+      <a href="/login" class="btn">Log in to RSVP</a>
+    <% } %>
+  </div>
+
+  <% if (currentUser && (currentUser.id === event.created_by || currentUser.role === 'admin')) { %>
+    <div class="owner-actions">
+      <a href="/events/<%= event.id %>/edit" class="btn btn-small">Edit</a>
+      <form action="/events/<%= event.id %>?_method=DELETE" method="POST" class="inline"
+            onsubmit="return confirm('Delete this event? This cannot be undone.');">
+        <button class="btn btn-small btn-danger">Delete</button>
+      </form>
+    </div>
+  <% } %>
+
+  <section class="attendees">
+    <h2>Attendees (<%= attendeeCount %>)</h2>
+    <% if (attendees.length === 0) { %>
+      <p class="empty">No one has RSVP'd yet. Be the first!</p>
+    <% } else { %>
+      <ul class="attendee-list">
+        <% attendees.forEach(a => { %>
+          <li><%= a.name %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </section>
+</article>
