@@ -1,3 +1,4 @@
+
 # 🎓 Campus Events
 
 A Server-Side Rendered (SSR) campus event manager. Students and clubs can post
@@ -10,14 +11,10 @@ or remove events, and every event page shows a live attendee list and count.
 
 | Name | Responsibility (suggested) |
 | --- | --- |
-| _Member 1_ | Backend — Express server & routing |
-| _Member 2_ | Database design & PostgreSQL queries |
-| _Member 3_ | Frontend / EJS templates & layout reuse |
-| _Member 4_ | Auth, middleware & RSVP feature |
-| _Member 5_ | Testing, documentation & presentation |
-
-> Replace the names above with your real group members.
-
+| Sofoniyas Tewodros 094 ||
+| Roba molla  ||
+| NahomFekadu  082 ||
+| yanet belay 097  ||
 ---
 
 ## ✨ Features
@@ -79,7 +76,7 @@ campus-events/
 
 ### 2. Clone and install
 ```bash
-git clone <YOUR_GITHUB_REPO_URL>
+git clone < https://github.com/sofi-devs/campus-events-manager.git>
 cd campus-events
 npm install
 ```
@@ -121,7 +118,7 @@ Open **http://localhost:3000**
 
 ## 🔗 GitHub Repository
 
-`<ADD YOUR REPOSITORY LINK HERE>`
+`<https://github.com/sofi-devs/campus-events-manager.git>`
 
 ---
 
@@ -130,3 +127,6 @@ Open **http://localhost:3000**
 - All database queries use **parameterized statements** (`$1, $2, …`) to prevent SQL injection.
 - Sessions are stored in memory by default, which is fine for development and demos.
   For production you would add a persistent session store (e.g. `connect-pg-simple`).
+
+# campus-events-manager
+
