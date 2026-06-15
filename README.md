@@ -15,6 +15,7 @@ or remove events, and every event page shows a live attendee list and count.
 | Roba molla 091 ||
 | NahomFekadu  082 ||
 | yanet belay 097  ||
+| yared Habtamu 045 ||
 ---
 
 ## ✨ Features
