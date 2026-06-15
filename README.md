@@ -12,7 +12,7 @@ or remove events, and every event page shows a live attendee list and count.
 | Name | Responsibility (suggested) |
 | --- | --- |
 | Sofoniyas Tewodros 094 ||
-| Roba molla  ||
+| Roba molla 091 ||
 | NahomFekadu  082 ||
 | yanet belay 097  ||
 ---
